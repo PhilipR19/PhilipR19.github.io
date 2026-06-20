@@ -9,8 +9,13 @@ site palette + Space Grotesk. Stdlib only.
 Run: python scripts/wordcloud.py
 """
 from __future__ import annotations
+import json
 import math
 import re
+import sys
+import time
+import urllib.parse
+import urllib.request
 from collections import Counter
 from pathlib import Path
 
@@ -20,16 +25,35 @@ OUT = ROOT / "assets" / "wordcloud.svg"
 # Inline include partial — inlined into the page so the SVG can use the
 # page's Space Grotesk web font (an <img>-embedded SVG cannot).
 OUT_MD = ROOT / "_wordcloud.md"
+# Cached abstracts so a rate-limited / offline build still has the corpus.
+CACHE = ROOT / "_abstracts.json"
+
+ORCID = "0000-0002-4028-8200"
+MAILTO = "pmr96@cornell.edu"
+OPENALEX = "https://api.openalex.org/works"
+S2 = "https://api.semanticscholar.org/graph/v1/paper/DOI:{doi}?fields=abstract"
 
 # Palette (matches custom.scss)
 INK, ACCENT, MID, MUTED = "#1A1A1A", "#234E70", "#555555", "#9a9a9a"
 
 STOP = set((
-    "the a an and or of to in on for with by from as at is are was were be been "
-    "reveals reveal using used use study studies novel role but during between both "
-    "via not new male female mice mouse human its their our we upon single day high "
-    "function dispensable causes elicits feeding subjects term long-term reduces induces "
-    "acts rapid five ways decide future leaders").split())
+    # function words
+    "the a an and or of to in on for with by from as at is are was were be been being "
+    "this that these those it its their our we they them he she his her into via not "
+    "but during between both upon while which whereas thus therefore however also here "
+    "than then when where what who whom can may could would should will more most such "
+    "each per other due if no nor only own same so too very s t re ve ll d m o "
+    # generic science / abstract filler (domain terms kept: adipose lipid fasting etc.)
+    "study studies using used use reveals reveal shows show shown showed novel role "
+    "results result resulting demonstrate demonstrated suggest suggests suggesting "
+    "indicate indicates indicated observed found increase increased decrease decreased "
+    "reduced reduces induces induced induction levels level compared comparison "
+    "associated significant significantly respectively groups group control controls "
+    "treatment treated effect effects data analysis identified following present "
+    "however whether function dispensable causes elicits feeding subjects term reduces "
+    "acts rapid five ways decide future leaders new male female mice mouse human "
+    "vivo vitro day days week weeks time number total three two one including measured "
+    "approach based toward towards single high low higher lower").split())
 
 # Curated multi-word terms kept whole (longest first to avoid sub-phrase counts)
 PHRASES = [
@@ -58,23 +82,107 @@ def _display(word: str) -> str:
     return word.lower()
 
 
-def frequencies(titles: list[str], top: int = 38) -> list[tuple[str, int]]:
+def _abstract_text(inv: dict | None) -> str:
+    """Reconstruct abstract text from OpenAlex's inverted index."""
+    if not inv:
+        return ""
+    positions = [(i, word) for word, idxs in inv.items() for i in idxs]
+    positions.sort()
+    return " ".join(w for _, w in positions)
+
+
+def _dois() -> list[str]:
+    """DOIs linked in the publications snapshot."""
+    found = re.findall(r"https://doi\.org/([^\s)\]]+)", PUBS.read_text())
+    return sorted(set(found))
+
+
+def _fetch_openalex() -> list[str]:
+    """All abstracts in a single OpenAlex query (backoff on 429)."""
+    params = urllib.parse.urlencode({
+        "filter": f"author.orcid:{ORCID}", "per-page": "200",
+        "mailto": MAILTO, "select": "abstract_inverted_index",
+    })
+    url = f"{OPENALEX}?{params}"
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": f"pr-website/1.0 (mailto:{MAILTO})"})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                results = json.loads(r.read()).get("results", [])
+            return [t for t in (_abstract_text(w.get("abstract_inverted_index")) for w in results) if t]
+        except urllib.error.HTTPError as e:  # noqa: PERF203
+            if e.code == 429:
+                time.sleep(3 * (attempt + 1))
+                continue
+            break
+        except Exception:  # noqa: BLE001
+            break
+    return []
+
+
+def _fetch_semanticscholar() -> list[str]:
+    """Per-DOI abstracts from Semantic Scholar. Retries each DOI on 429 with
+    backoff (its unauthenticated pool throttles aggressively)."""
+    out = []
+    for doi in _dois():
+        for attempt in range(4):
+            try:
+                req = urllib.request.Request(S2.format(doi=urllib.parse.quote(doi, safe="")),
+                                             headers={"User-Agent": f"pr-website/1.0 (mailto:{MAILTO})"})
+                with urllib.request.urlopen(req, timeout=20) as r:
+                    a = json.loads(r.read()).get("abstract")
+                if a:
+                    out.append(a)
+                break
+            except urllib.error.HTTPError as e:  # noqa: PERF203
+                if e.code == 429:
+                    time.sleep(4 * (attempt + 1))
+                    continue
+                break
+            except Exception:  # noqa: BLE001
+                break
+        time.sleep(1.2)
+    return out
+
+
+def fetch_abstracts() -> list[str]:
+    """Semantic Scholar (best per-DOI coverage) → OpenAlex fallback.
+    Returns [] only if both are unavailable (caller then uses the cache)."""
+    return _fetch_semanticscholar() or _fetch_openalex()
+
+
+def load_abstracts_cache() -> list[str]:
+    try:
+        return json.loads(CACHE.read_text()).get("abstracts", [])
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def _accumulate(text: str, weight: int, freq: Counter, disp: dict) -> None:
+    masked = text
+    for ph in PHRASES:
+        n = len(re.findall(re.escape(ph), masked, flags=re.I))
+        if n:
+            freq[ph] += n * weight
+            disp[ph] = ph
+            masked = re.sub(re.escape(ph), " ", masked, flags=re.I)
+    for w in re.findall(r"[A-Za-z][A-Za-z0-9-]{2,}", masked):
+        wl = w.lower()
+        if wl in STOP or len(re.sub(r"[^a-z0-9]", "", wl)) < 3:
+            continue
+        freq[wl] += weight
+        disp.setdefault(wl, _display(w))
+
+
+def frequencies(titles: list[str], abstracts: list[str], top: int = 48) -> list[tuple[str, int]]:
+    """Title terms weighted ×3 over abstract terms so the cloud stays on-theme."""
     freq: Counter = Counter()
     disp: dict[str, str] = {}
     for title in titles:
-        masked = title
-        for ph in PHRASES:
-            n = len(re.findall(re.escape(ph), masked, flags=re.I))
-            if n:
-                freq[ph] += n
-                disp[ph] = ph
-                masked = re.sub(re.escape(ph), " ", masked, flags=re.I)
-        for w in re.findall(r"[A-Za-z][A-Za-z0-9-]{2,}", masked):
-            wl = w.lower()
-            if wl in STOP or len(re.sub(r"[^a-z0-9]", "", wl)) < 3:
-                continue
-            freq[wl] += 1
-            disp.setdefault(wl, _display(w))
+        _accumulate(title, 3, freq, disp)
+    for abstract in abstracts:
+        _accumulate(abstract, 1, freq, disp)
     return [(disp[w], c) for w, c in freq.most_common(top)]
 
 
@@ -148,7 +256,15 @@ def build_svg(words: list[tuple[str, int]]) -> str:
 
 
 def main() -> int:
-    words = frequencies(_titles())
+    titles = _titles()
+    fetched = fetch_abstracts()
+    cached = load_abstracts_cache()
+    # Never downgrade a richer cached corpus with a thin (rate-limited) fetch.
+    abstracts = fetched if len(fetched) >= len(cached) else cached
+    if abstracts:
+        CACHE.write_text(json.dumps({"abstracts": abstracts}, ensure_ascii=False))
+    print(f"abstracts: {len(fetched)} fetched, {len(cached)} cached -> using {len(abstracts)}", file=sys.stderr)
+    words = frequencies(titles, abstracts)
     svg = build_svg(words)
     OUT.write_text(svg)
     OUT_MD.write_text("```{=html}\n" + svg + "\n```\n")
