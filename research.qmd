@@ -5,40 +5,51 @@ pagetitle: "Research — Philip Ruppert"
 
 ::: {.lede}
 My work follows one chain of cause and effect: how the food we eat is recorded
-in the epigenome of fat tissue, how that record sets the tissue's capacity to
-store energy, and how that capacity shapes long-term health and aging.
-*(Draft scaffold — prose below to be written/approved by Philip; no claims published without sign-off.)*
+in the epigenome and physiology of fat tissue, how that record sets the tissue's
+capacity to store and mobilize energy, and how that capacity shapes long-term
+metabolic health.
 :::
 
 ::: {.stage-section}
 [Nutrition]{.stage-label}
 ## Diet as a signal {.stage-heading}
 
-*Draft.* How dietary inputs — including methionine and other amino-acid
-availability — act as signals to adipose tissue. *(Philip to write.)*
+Diet is more than fuel — specific nutritional states act as signals. Across my
+work, cues such as fasting, ketogenesis, and the availability of sulfur amino
+acids like methionine reprogram metabolic tissues. As an EMBO postdoctoral
+fellow I focused on dietary methionine as a signal to thermogenic fat (the
+*ChromaBAT* project), asking how a nutrient becomes an instruction.
 :::
 
 ::: {.stage-section}
 [Adipose epigenome]{.stage-label}
 ## Writing the chromatin record {.stage-heading}
 
-*Draft.* Chromatin-level reprogramming of fat cells; the WDR5 thread and the
-regulatory machinery that encodes nutritional state. *(Philip to write.)*
+These dietary signals converge on chromatin. I study how nutritional state is
+written into the gene-regulatory landscape of fat cells — for example, how
+restricting dietary sulfur amino acids elicits a cold-like transcriptional
+program in white adipose tissue. The recurring question is how a transient
+dietary input leaves a durable regulatory mark.
 :::
 
 ::: {.stage-section}
 [Storage capacity]{.stage-label}
 ## Setting the limits of energy storage {.stage-heading}
 
-*Draft.* How the epigenetic state translates into the tissue's functional
-capacity to expand and store lipid. *(Philip to write.)*
+That regulatory state determines what fat tissue can do: how it takes up,
+stores, and releases lipid. My earlier work dissected the machinery controlling
+lipoprotein lipase — how ANGPTL4 drives its intracellular cleavage by
+PCSK3/furin, and how fasting raises ANGPTL4 to lower LPL activity in human
+adipose tissue — alongside how ketone bodies such as β-hydroxybutyrate signal
+within muscle and fat.
 :::
 
 ::: {.stage-section}
 [Health & aging]{.stage-label}
 ## Consequences across the lifespan {.stage-heading}
 
-*Draft.* Links to metabolic health, aging, and resilience — including fasting
-biology (FastingAtlas) and torpor as windows onto adaptive metabolism.
-*(Philip to write.)*
+Energy-storage capacity shapes metabolic health over a lifetime. I work to
+connect mechanism to physiology — from hepatic fatty-acid oxidation and
+ketogenesis during fasting to the metabolic regulation and safety of long-term
+fasting in humans — with a growing interest in aging and metabolic resilience.
 :::

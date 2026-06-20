@@ -15,9 +15,10 @@ description: "Research Associate, Kersten Lab, Cornell University — how nutrit
 :::
 
 ::: {.lede}
-I study how diet reshapes the epigenome of fat tissue, and how that
-reprogramming sets the body's capacity to store energy — with consequences
-for metabolic health, aging, and resilience. *(Draft — Philip to approve wording.)*
+I'm a molecular-nutrition scientist studying how diet is recorded in the
+epigenome and physiology of fat tissue — and how that record sets the body's
+capacity to store and burn energy, with consequences for metabolic health,
+aging, and resilience.
 :::
 
 ::: {.links}
