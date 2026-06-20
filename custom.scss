@@ -56,6 +56,15 @@ h1, h2, h3, .display-name {
 // ── Hero (landing) ───────────────────────────────────────────
 .hero { margin: 2.4rem 0 3rem; }
 
+.portrait {
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  border: 1px solid $hairline;   // square corners — structured language
+  display: block;
+  margin: 0 0 1.3rem;
+}
+
 .eyebrow {
   display: block;
   font-family: $font-family-monospace;
