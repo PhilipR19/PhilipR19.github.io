@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - research.qmd
+    - publications.qmd
+
+website:
+  title: "Philip Ruppert"
+  navbar:
+    pinned: true
+    right:
+      - text: Home
+        href: index.qmd
+      - text: Research
+        href: research.qmd
+      - text: Publications
+        href: publications.qmd
+      - icon: github
+        href: https://github.com/PhilipR19
+        aria-label: GitHub
+      - text: ORCID
+        href: https://orcid.org/0000-0002-4028-8200
+
+format:
+  html:
+    theme: [litera, custom.scss]
+    toc: false
+    page-layout: article
+    grid:
+      body-width: 740px
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">

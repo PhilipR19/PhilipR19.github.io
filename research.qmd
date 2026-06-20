@@ -1,0 +1,44 @@
+---
+title: "Research"
+pagetitle: "Research — Philip Ruppert"
+---
+
+::: {.lede}
+My work follows one chain of cause and effect: how the food we eat is recorded
+in the epigenome of fat tissue, how that record sets the tissue's capacity to
+store energy, and how that capacity shapes long-term health and aging.
+*(Draft scaffold — prose below to be written/approved by Philip; no claims published without sign-off.)*
+:::
+
+::: {.stage-section}
+[Nutrition]{.stage-label}
+## Diet as a signal {.stage-heading}
+
+*Draft.* How dietary inputs — including methionine and other amino-acid
+availability — act as signals to adipose tissue. *(Philip to write.)*
+:::
+
+::: {.stage-section}
+[Adipose epigenome]{.stage-label}
+## Writing the chromatin record {.stage-heading}
+
+*Draft.* Chromatin-level reprogramming of fat cells; the WDR5 thread and the
+regulatory machinery that encodes nutritional state. *(Philip to write.)*
+:::
+
+::: {.stage-section}
+[Storage capacity]{.stage-label}
+## Setting the limits of energy storage {.stage-heading}
+
+*Draft.* How the epigenetic state translates into the tissue's functional
+capacity to expand and store lipid. *(Philip to write.)*
+:::
+
+::: {.stage-section}
+[Health & aging]{.stage-label}
+## Consequences across the lifespan {.stage-heading}
+
+*Draft.* Links to metabolic health, aging, and resilience — including fasting
+biology (FastingAtlas) and torpor as windows onto adaptive metabolism.
+*(Philip to write.)*
+:::

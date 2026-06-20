@@ -1,0 +1,10 @@
+---
+title: "Publications"
+pagetitle: "Publications — Philip Ruppert"
+---
+
+::: {.eyebrow}
+Auto-generated from ORCID · updated weekly
+:::
+
+{{< include _publications.md >}}

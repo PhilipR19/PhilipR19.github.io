@@ -1,0 +1,29 @@
+---
+pagetitle: "Philip Ruppert"
+description: "Research Associate, Kersten Lab, Cornell University — how nutrition writes the adipose epigenome."
+---
+
+::: {.hero}
+[Research Associate · Kersten Lab · Cornell University]{.eyebrow}
+
+# Philip Ruppert {.display-name}
+
+::: {.pathway}
+[Nutrition]{.stage}[→]{.link}[adipose epigenome]{.stage}[→]{.link}[storage capacity]{.stage}[→]{.link}[health & aging]{.stage}
+:::
+
+::: {.lede}
+I study how diet reshapes the epigenome of fat tissue, and how that
+reprogramming sets the body's capacity to store energy — with consequences
+for metabolic health, aging, and resilience. *(Draft — Philip to approve wording.)*
+:::
+
+::: {.links}
+[Email](mailto:CHANGE_ME@cornell.edu)
+[ORCID](https://orcid.org/0000-0002-4028-8200)
+[GitHub](https://github.com/PhilipR19)
+[CV](assets/cv.pdf)
+:::
+:::
+
+<!-- TODO (human gate): set real email above; add assets/cv.pdf and assets/photo.jpg. -->
