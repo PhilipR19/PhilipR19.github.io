@@ -23,8 +23,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Refresh publications from ORCID (non-fatal)
-        run: python scripts/fetch_orcid.py || echo "ORCID fetch failed; using committed snapshot"
+      - name: Refresh publications from OpenAlex (non-fatal)
+        run: python scripts/fetch_publications.py || echo "OpenAlex fetch failed; using committed snapshot"
       - uses: quarto-dev/quarto-actions/setup@v2
       - uses: quarto-dev/quarto-actions/render@v2
       - uses: actions/upload-pages-artifact@v3
