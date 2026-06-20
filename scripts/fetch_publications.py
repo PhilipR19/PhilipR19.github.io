@@ -43,6 +43,80 @@ def _get_accept(url: str, accept: str) -> bytes:
 
 SELECT = "id,display_name,publication_year,doi,type,authorships,primary_location"
 ORCID_WORKS_URL = f"https://pub.orcid.org/v3.0/{ORCID}/works"
+SCHOLAR_USER = "zknZJ8EAAAAJ"
+SCHOLAR_URL = (f"https://scholar.google.com/citations?user={SCHOLAR_USER}"
+               "&hl=en&cstart=0&pagesize=100")
+BROWSER_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+# Scholar entries that are not standalone papers
+SKIP_TITLE_PREFIX = ("publisher correction", "author correction", "correction to",
+                     "correction:", "corrigendum", "erratum", "reply to",
+                     "author response", "comment on", "response to")
+
+
+def _title_sim(a: str, b: str) -> float:
+    ta, tb = _tokens(a), _tokens(b)
+    return len(ta & tb) / len(ta | tb) if ta and tb else 0.0
+
+
+def fetch_scholar() -> list[dict]:
+    """Best-effort scrape of the Google Scholar profile — the most complete
+    list. Returns [{title, authors, venue, year}]; [] if blocked/empty."""
+    try:
+        req = urllib.request.Request(SCHOLAR_URL, headers={
+            "User-Agent": BROWSER_UA, "Accept-Language": "en-US,en;q=0.9"})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            page = r.read().decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        print(f"  ! Google Scholar fetch failed: {e}", file=sys.stderr)
+        return []
+    if 'gsc_a_at' not in page or 'class="g-recaptcha"' in page:
+        print("  ! Google Scholar returned no rows (blocked?)", file=sys.stderr)
+        return []
+    import html as _html
+    clean = lambda s: _html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
+    out = []
+    for row in page.split('class="gsc_a_tr"')[1:]:
+        mt = re.search(r'class="gsc_a_at"[^>]*>(.*?)</a>', row, re.S)
+        if not mt:
+            continue
+        title = clean(mt.group(1))
+        if not title or title.lower().startswith(SKIP_TITLE_PREFIX):
+            continue
+        grays = re.findall(r'class="gs_gray">(.*?)</div>', row, re.S)
+        authors = clean(grays[0]) if grays else ""
+        venue = clean(grays[1]) if len(grays) > 1 else ""
+        my = re.search(r'class="gsc_a_y[^"]*"[^>]*>.*?(\d{4})', row, re.S)
+        year = my.group(1) if my else (re.search(r"(20\d\d|19\d\d)", venue) or [None])[0]
+        out.append({"title": title, "authors": authors, "venue": venue, "year": year})
+    return out
+
+
+def enrich_by_title(title: str) -> dict | None:
+    """Resolve a Scholar title to a full OpenAlex work (DOI + authors)."""
+    try:
+        q = urllib.parse.urlencode({"filter": f"title.search:{title}", "per-page": "1",
+                                    "mailto": MAILTO, "select": SELECT})
+        res = json.loads(_get(f"{OPENALEX}?{q}")).get("results", [])
+    except Exception:  # noqa: BLE001
+        return None
+    if res and _title_sim(title, res[0].get("display_name", "")) >= 0.7:
+        return res[0]
+    return None
+
+
+def _scholar_work(entry: dict) -> dict:
+    """OpenAlex-shaped record from Scholar fields (used when OpenAlex has no
+    match — e.g. brand-new papers or commentaries)."""
+    authors = [{"author": {"display_name": a.strip()}}
+               for a in re.split(r",|\band\b", entry.get("authors", "")) if a.strip()]
+    venue = re.sub(r"[,\s]*(20\d\d|19\d\d).*$", "", entry.get("venue", "")).strip()
+    return {
+        "display_name": entry["title"],
+        "publication_year": int(entry["year"]) if entry.get("year") else None,
+        "doi": None, "type": "article", "authorships": authors,
+        "primary_location": {"source": {"display_name": venue}},
+    }
 
 
 def _norm_doi(doi: str | None) -> str:
@@ -108,8 +182,8 @@ def _orcid_fallback_work(item: dict) -> dict:
 
 
 def collect_works() -> list[dict]:
-    """Union of OpenAlex-by-author and ORCID-curated DOIs, with OpenAlex
-    metadata for every entry."""
+    """Union of Google Scholar (most complete), OpenAlex-by-author, and
+    ORCID-curated works — with OpenAlex metadata wherever available."""
     oa = fetch_openalex_by_author()
     print(f"OpenAlex author entity: {len(oa)} works", file=sys.stderr)
     seen = {_norm_doi(w.get("doi")) for w in oa if w.get("doi")}
@@ -122,10 +196,24 @@ def collect_works() -> list[dict]:
         if not nd or nd in seen:
             continue
         seen.add(nd)
-        w = fetch_openalex_by_doi(it["doi"]) or _orcid_fallback_work(it)
-        oa.append(w)
+        oa.append(fetch_openalex_by_doi(it["doi"]) or _orcid_fallback_work(it))
         added += 1
-    print(f"recovered {added} ORCID-only works missing from the author entity", file=sys.stderr)
+    print(f"recovered {added} ORCID-only works", file=sys.stderr)
+
+    scholar = fetch_scholar()
+    print(f"Google Scholar: {len(scholar)} entries", file=sys.stderr)
+    sch_added = 0
+    for e in scholar:
+        if any(_title_sim(e["title"], w.get("display_name", "")) >= 0.7 for w in oa):
+            continue  # already have this paper from OpenAlex/ORCID
+        w = enrich_by_title(e["title"]) or _scholar_work(e)
+        if not w.get("doi") and not w.get("publication_year"):
+            continue  # no DOI and no year => unverifiable Scholar row / parse artifact
+        if any(_title_sim(w.get("display_name", ""), x.get("display_name", "")) >= 0.7 for x in oa):
+            continue  # enrichment resolved to one we already have
+        oa.append(w)
+        sch_added += 1
+    print(f"added {sch_added} Scholar-only works", file=sys.stderr)
     return oa
 
 
@@ -227,6 +315,16 @@ def main() -> int:
     by_year: dict[int, list[str]] = defaultdict(list)
     for w in reps:
         by_year[year_of(w)].append(format_citation(w))
+
+    # Regression guard: never overwrite the committed snapshot with a SHORTER
+    # list. Protects against a captcha-blocked Scholar run (or any source
+    # hiccup) silently shrinking the published publications on a weekly build.
+    if OUT.exists():
+        existing = sum(1 for ln in OUT.read_text().splitlines() if ln.startswith("- "))
+        if len(reps) < existing:
+            print(f"refusing to shrink {existing} -> {len(reps)} entries "
+                  f"(a source was likely incomplete); keeping committed snapshot", file=sys.stderr)
+            return 0
 
     lines = ["<!-- generated by scripts/fetch_publications.py — do not edit by hand -->", ""]
     for yr in sorted(by_year, reverse=True):

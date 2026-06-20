@@ -2,11 +2,14 @@
 
 ### [2026]{.pub-year}
 
+- Chien Huang, Joo-Hyun Park, Ali Altıntaş, Nataša Stanić, Kristine Kyle de Leon, Signe Isacson, Panagiotis Kalogeropoulos, Hande Topel, et al.. *Male obesity causes adipose mitochondrial dysfunction in F1 mouse progeny via a let-7-DICER axis*. Nature Communications 2026. [doi.org/10.1038/s41467-026-69686-5](https://doi.org/10.1038/s41467-026-69686-5)
 - **Philip M. M. Ruppert**, Aylin S Gueller, Marcus Skjæveland, Nataša Stanić, Jan‐Wilhelm Kornfeld. *Dietary sulfur amino acid restriction elicits a cold-like transcriptional response in inguinal but not epididymal white adipose tissue of male mice*. eLife 2026. [doi.org/10.7554/elife.108825.3](https://doi.org/10.7554/elife.108825.3)
+- Nina Trinks, Sofiya Gancheva, Jennifer Pützer, Martin Schön, Maximilian Huttasch, Kalliopi Pafili, Lucia Mastrototaro, Bedair Dewidar, et al.. *Blood-flow restriction resistance training improves skeletal muscle mitochondrial capacity and cardiovascular risk factors in type 2 diabetes*. Cell Metabolism 2026. [doi.org/10.1016/j.cmet.2025.12.016](https://doi.org/10.1016/j.cmet.2025.12.016)
 
 ### [2025]{.pub-year}
 
 - **Philip M. M. Ruppert**, Sander Kersten. *Regulation of Adipose Tissue Metabolism During Fasting*. Annual Review of Nutrition 2025. [doi.org/10.1146/annurev-nutr-120524-013857](https://doi.org/10.1146/annurev-nutr-120524-013857)
+- M Dall, K Herzog, A Hufnagel, DB Ibsen, B Lebiecka-Johansen, .... *Our future, we decide: five ways to reform the scientific publication process*. Nature Reviews Endocrinology 21 (1), 5-6 2025.
 - Mie Feldfoss Nørremark, Rikke Agnete Petersen, **Philip M. M. Ruppert**, Thomas Koed Doktor, Ronni Nielsen, Jesper From Kappel, Steen Larsen, Jan‐Wilhelm Kornfeld, et al.. *Acyl-CoA Binding Protein is Dispensable for White and Brown Adipose Tissue Function*. SSRN Electronic Journal 2025. [doi.org/10.2139/ssrn.5177184](https://doi.org/10.2139/ssrn.5177184)
 
 ### [2024]{.pub-year}
@@ -17,6 +20,10 @@
 ### [2023]{.pub-year}
 
 - **Philip M.M. Ruppert**, Sander Kersten. *Mechanisms of hepatic fatty acid oxidation and ketogenesis during fasting*. Trends in Endocrinology and Metabolism 2023. [doi.org/10.1016/j.tem.2023.10.002](https://doi.org/10.1016/j.tem.2023.10.002)
+
+### [2022]{.pub-year}
+
+- Robin Mesnage, Franziska Grundler, **Philip MM Ruppert**, Françoise Wilhelmi de Toledo. *Clinical and Dietary Determinants of Ketosis During Long-Term Fasting in 1610 Subjects*. Current Developments in Nutrition 2022. [doi.org/10.1093/cdn/nzac054.037](https://doi.org/10.1093/cdn/nzac054.037)
 
 ### [2021]{.pub-year}
 
