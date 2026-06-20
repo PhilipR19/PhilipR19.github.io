@@ -204,16 +204,23 @@ def collect_works() -> list[dict]:
     print(f"Google Scholar: {len(scholar)} entries", file=sys.stderr)
     sch_added = 0
     for e in scholar:
-        if any(_title_sim(e["title"], w.get("display_name", "")) >= 0.7 for w in oa):
-            continue  # already have this paper from OpenAlex/ORCID
-        w = enrich_by_title(e["title"]) or _scholar_work(e)
+        venue = (e.get("venue") or "").lower()
+        scholar_published = bool(venue) and not any(p in venue for p in PREPRINT_VENUES)
+        w = enrich_by_title(e["title"])
+        # Use Scholar's own (published) record if OpenAlex has no match, or only
+        # knows the preprint while Scholar shows a journal version of record.
+        if w is None or (scholar_published and _is_preprint(w)):
+            w = _scholar_work(e)
         if not w.get("doi") and not w.get("publication_year"):
             continue  # no DOI and no year => unverifiable Scholar row / parse artifact
-        if any(_title_sim(w.get("display_name", ""), x.get("display_name", "")) >= 0.7 for x in oa):
-            continue  # enrichment resolved to one we already have
+        nd = _norm_doi(w.get("doi"))
+        if nd and nd in seen:
+            continue  # exact same record already in the pool (dedupe handles title overlap)
+        if nd:
+            seen.add(nd)
         oa.append(w)
         sch_added += 1
-    print(f"added {sch_added} Scholar-only works", file=sys.stderr)
+    print(f"added {sch_added} Scholar works", file=sys.stderr)
     return oa
 
 
@@ -250,32 +257,51 @@ def _tokens(title: str) -> set:
     return set(_norm_title(title).split())
 
 
-def _merge_near_dupes(reps: list[dict], threshold: float = 0.6) -> list[dict]:
-    """Collapse reworded versions of the same paper (e.g. bioRxiv vs SSRN vs
-    journal titles) by token-set Jaccard similarity, keeping the best-ranked."""
-    ordered = sorted(reps, key=_rank, reverse=True)  # best first → kept as representative
-    kept: list[dict] = []
-    for w in ordered:
-        tw = _tokens(w.get("display_name", ""))
-        if any(tw and (tk := _tokens(k.get("display_name", "")))
-               and len(tw & tk) / len(tw | tk) >= threshold for k in kept):
-            continue
-        kept.append(w)
-    return kept
+PREPRINT_VENUES = ("biorxiv", "medrxiv", "arxiv", "ssrn", "research square",
+                   "preprint", "chemrxiv", "authorea", "cold spring harbor")
+
+
+def _is_preprint(w: dict) -> bool:
+    if w.get("type") == "preprint":
+        return True
+    venue = (((w.get("primary_location") or {}).get("source") or {}).get("display_name") or "").lower()
+    return any(p in venue for p in PREPRINT_VENUES)
+
+
+def _is_published(w: dict) -> bool:
+    loc = w.get("primary_location") or {}
+    src = loc.get("source") or {}
+    if loc.get("version") == "publishedVersion" or src.get("type") == "journal":
+        return True
+    if _is_preprint(w):
+        return False
+    return bool(src.get("display_name"))  # a journal-like venue (e.g. Scholar fallback)
 
 
 def dedupe(works: list[dict]) -> list[dict]:
-    """Drop non-papers, collapse exact-title versions, then merge reworded
-    near-duplicate versions to the best one."""
-    groups: dict[str, list[dict]] = defaultdict(list)
-    for w in works:
-        if (w.get("type") or "") in DROP_TYPES:
-            continue
-        if not (w.get("display_name") or "").strip():
-            continue
-        groups[_norm_title(w["display_name"])].append(w)
-    exact = [max(ws, key=_rank) for ws in groups.values()]
-    return _merge_near_dupes(exact)
+    """Drop non-papers, then cluster reworded versions of the same paper.
+    Within each cluster, keep the best PUBLISHED record and (separately) the
+    best PREPRINT record — so a preprint and its journal version both appear,
+    while same-version duplicates (multiple eLife/bioRxiv records) collapse."""
+    items = [w for w in works
+             if (w.get("type") or "") not in DROP_TYPES and (w.get("display_name") or "").strip()]
+    clusters: list[list[dict]] = []
+    for w in items:
+        for c in clusters:
+            if _title_sim(w["display_name"], c[0]["display_name"]) >= 0.6:
+                c.append(w)
+                break
+        else:
+            clusters.append([w])
+    reps: list[dict] = []
+    for c in clusters:
+        published = [w for w in c if _is_published(w)]
+        preprints = [w for w in c if not _is_published(w)]
+        if published:
+            reps.append(max(published, key=_rank))
+        if preprints:
+            reps.append(max(preprints, key=_rank))
+    return reps
 
 
 def format_citation(work: dict) -> str:
@@ -283,6 +309,8 @@ def format_citation(work: dict) -> str:
     title = (work.get("display_name") or "").rstrip(".")
     src = (work.get("primary_location") or {}).get("source") or {}
     venue = src.get("display_name") or ""
+    if _is_preprint(work):
+        venue = f"{venue} · preprint".lstrip(" ·") if venue else "preprint"
     year = work.get("publication_year")
     doi = work.get("doi") or ""  # full URL (e.g. https://doi.org/10.x) or None
     parts = []

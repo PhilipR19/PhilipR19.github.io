@@ -26,7 +26,7 @@ def test_bold_author_marks_ruppert():
     assert bold_author("Sander Kersten") == "Sander Kersten"
 
 
-def test_dedupe_prefers_published_over_preprint():
+def test_dedupe_keeps_published_and_preprint():
     preprint = {
         "display_name": "Same Paper, Two Versions",
         "publication_year": 2025,
@@ -42,8 +42,9 @@ def test_dedupe_prefers_published_over_preprint():
                              "source": {"type": "journal", "display_name": "eLife"}},
     }
     reps = dedupe([preprint, published])
-    assert len(reps) == 1
-    assert reps[0]["publication_year"] == 2026
+    years = sorted(r["publication_year"] for r in reps)
+    assert years == [2025, 2026]  # both the preprint and the published version are kept
+    assert "preprint" in format_citation(preprint)  # preprint is labelled
 
 
 def test_dedupe_drops_peer_review():
