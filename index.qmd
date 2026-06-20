@@ -29,4 +29,10 @@ aging, and resilience.
 :::
 :::
 
-<!-- TODO (human gate): set real email above; add assets/cv.pdf and assets/photo.jpg. -->
+::: {.themes}
+[Research themes — from my publications]{.eyebrow}
+
+::: {.wordcloud}
+{{< include _wordcloud.md >}}
+:::
+:::

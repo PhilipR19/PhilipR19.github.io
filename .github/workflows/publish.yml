@@ -25,6 +25,8 @@ jobs:
           python-version: "3.12"
       - name: Refresh publications from OpenAlex (non-fatal)
         run: python scripts/fetch_publications.py || echo "OpenAlex fetch failed; using committed snapshot"
+      - name: Rebuild research-themes word cloud (non-fatal)
+        run: python scripts/wordcloud.py || echo "word cloud build failed; using committed snapshot"
       - uses: quarto-dev/quarto-actions/setup@v2
       - uses: quarto-dev/quarto-actions/render@v2
       - uses: actions/upload-pages-artifact@v3

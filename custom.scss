@@ -121,6 +121,17 @@ h1, h2, h3, .display-name {
   }
 }
 
+// ── Front-page research-themes word cloud ────────────────────
+.themes {
+  margin-top: 2.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid $hairline;
+}
+.wordcloud {
+  margin-top: 0.8rem;
+  svg { display: block; width: 100%; height: auto; }
+}
+
 // ── Research page: pathway-stage sections ────────────────────
 .stage-section {
   border-top: 1px solid $hairline;
