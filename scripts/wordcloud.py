@@ -121,11 +121,11 @@ def _fetch_openalex() -> list[str]:
     return []
 
 
-def _fetch_semanticscholar() -> list[str]:
-    """Per-DOI abstracts from Semantic Scholar. Retries each DOI on 429 with
+def _fetch_semanticscholar(dois: list[str]) -> dict:
+    """{doi: abstract} from Semantic Scholar. Retries each DOI on 429 with
     backoff (its unauthenticated pool throttles aggressively)."""
-    out = []
-    for doi in _dois():
+    out = {}
+    for doi in dois:
         for attempt in range(4):
             try:
                 req = urllib.request.Request(S2.format(doi=urllib.parse.quote(doi, safe="")),
@@ -133,7 +133,7 @@ def _fetch_semanticscholar() -> list[str]:
                 with urllib.request.urlopen(req, timeout=20) as r:
                     a = json.loads(r.read()).get("abstract")
                 if a:
-                    out.append(a)
+                    out[doi] = a
                 break
             except urllib.error.HTTPError as e:  # noqa: PERF203
                 if e.code == 429:
@@ -146,17 +146,12 @@ def _fetch_semanticscholar() -> list[str]:
     return out
 
 
-def fetch_abstracts() -> list[str]:
-    """Semantic Scholar (best per-DOI coverage) → OpenAlex fallback.
-    Returns [] only if both are unavailable (caller then uses the cache)."""
-    return _fetch_semanticscholar() or _fetch_openalex()
-
-
-def load_abstracts_cache() -> list[str]:
+def load_cache() -> dict:
+    """{doi: abstract_text}, accumulated across builds so coverage only grows."""
     try:
-        return json.loads(CACHE.read_text()).get("abstracts", [])
+        return json.loads(CACHE.read_text()).get("by_doi", {})
     except Exception:  # noqa: BLE001
-        return []
+        return {}
 
 
 def _accumulate(text: str, weight: int, freq: Counter, disp: dict) -> None:
@@ -257,13 +252,17 @@ def build_svg(words: list[tuple[str, int]]) -> str:
 
 def main() -> int:
     titles = _titles()
-    fetched = fetch_abstracts()
-    cached = load_abstracts_cache()
-    # Never downgrade a richer cached corpus with a thin (rate-limited) fetch.
-    abstracts = fetched if len(fetched) >= len(cached) else cached
-    if abstracts:
-        CACHE.write_text(json.dumps({"abstracts": abstracts}, ensure_ascii=False))
-    print(f"abstracts: {len(fetched)} fetched, {len(cached)} cached -> using {len(abstracts)}", file=sys.stderr)
+    by_doi = load_cache()
+    missing = [d for d in _dois() if d not in by_doi]
+    fresh = _fetch_semanticscholar(missing) if missing else {}
+    by_doi.update(fresh)  # accumulate — coverage only grows across builds
+    if by_doi:
+        CACHE.write_text(json.dumps({"by_doi": by_doi}, ensure_ascii=False, indent=0))
+        abstracts = list(by_doi.values())
+    else:
+        abstracts = _fetch_openalex()  # last resort if nothing is cached yet
+    print(f"abstracts: {len(by_doi)} cached (+{len(fresh)} new), {len(missing)} DOIs missing",
+          file=sys.stderr)
     words = frequencies(titles, abstracts)
     svg = build_svg(words)
     OUT.write_text(svg)

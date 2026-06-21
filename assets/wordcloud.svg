@@ -1,51 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-528.6 -330.5 1133.0 648.1" role="img" aria-label="Word cloud of research themes from Philip Ruppert's publications" font-family="Space Grotesk, IBM Plex Sans, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-559.0 -308.5 1060.3 624.2" role="img" aria-label="Word cloud of research themes from Philip Ruppert's publications" font-family="Space Grotesk, IBM Plex Sans, sans-serif">
 <title>Research themes</title>
-<text x="0.0" y="0.0" font-size="62.0" font-weight="600" fill="#234E70" text-anchor="middle" dominant-baseline="central">fasting</text>
-<text x="50.0" y="70.0" font-size="61.2" font-weight="600" fill="#234E70" text-anchor="middle" dominant-baseline="central">PPAR</text>
-<text x="-69.7" y="-83.2" font-size="60.5" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">adipose tissue</text>
-<text x="24.7" y="147.6" font-size="59.7" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">ANGPTL4</text>
-<text x="-145.1" y="77.5" font-size="43.0" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">CREB3L3</text>
-<text x="-194.3" y="18.3" font-size="40.3" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">brown</text>
-<text x="-113.9" y="-148.1" font-size="40.3" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">regulation</text>
-<text x="281.8" y="-9.8" font-size="40.3" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">cold-induced</text>
-<text x="-2.7" y="-201.5" font-size="40.3" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">gene expression</text>
-<text x="277.6" y="39.2" font-size="38.9" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">metabolic</text>
-<text x="187.7" y="84.4" font-size="38.9" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">fat</text>
-<text x="104.7" y="-155.8" font-size="37.3" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">white</text>
-<text x="300.5" y="-92.1" font-size="37.3" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">truncated</text>
-<text x="272.5" y="131.4" font-size="37.3" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">macrophages</text>
-<text x="-174.0" y="153.3" font-size="37.3" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">plasma</text>
-<text x="120.1" y="204.0" font-size="35.7" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">metabolism</text>
-<text x="-367.6" y="-9.0" font-size="35.7" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">mechanisms</text>
-<text x="78.3" y="248.4" font-size="35.7" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">adipocytes</text>
-<text x="-250.6" y="205.7" font-size="33.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">transcriptional</text>
-<text x="245.8" y="-138.9" font-size="33.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">protein</text>
-<text x="-314.8" y="111.9" font-size="33.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">hepatic</text>
-<text x="-417.7" y="-51.5" font-size="33.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">expression</text>
-<text x="-354.9" y="54.0" font-size="33.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">lipid</text>
-<text x="252.5" y="-182.7" font-size="31.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">dietary</text>
-<text x="-334.6" y="155.7" font-size="31.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">inguinal</text>
-<text x="-109.8" y="-261.6" font-size="31.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">fatty acid oxidation</text>
-<text x="352.4" y="182.0" font-size="31.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">ketogenesis</text>
-<text x="16.9" y="288.9" font-size="29.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">restriction</text>
-<text x="-313.5" y="-183.3" font-size="29.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">response</text>
-<text x="-235.7" y="253.0" font-size="29.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">Angptl4-hypomorphic</text>
-<text x="-380.8" y="-121.7" font-size="29.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">chylous</text>
-<text x="245.0" y="-229.2" font-size="29.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">ascites</text>
-<text x="132.6" y="-260.8" font-size="29.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">genes</text>
-<text x="318.2" y="79.0" font-size="26.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">browning</text>
-<text x="-74.1" y="215.5" font-size="26.9" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">BAT</text>
-<text x="449.5" y="37.7" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">binding</text>
-<text x="-48.3" y="-304.8" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">Long-Term</text>
-<text x="-468.6" y="61.0" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">niche</text>
-<text x="89.9" y="-302.7" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">myotubes</text>
-<text x="259.0" y="236.6" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">diet</text>
-<text x="430.0" y="-163.0" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">exhibit</text>
-<text x="490.0" y="91.1" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">lymphadenopathy</text>
-<text x="222.5" y="-276.9" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">cold</text>
-<text x="338.9" y="-229.2" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">WAT</text>
-<text x="488.3" y="-83.4" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">wildtype</text>
-<text x="509.0" y="3.6" font-size="23.4" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">OHB</text>
-<text x="-197.4" y="-15.9" font-size="15.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">mitochondrial</text>
-<text x="264.1" y="-57.2" font-size="15.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">sulfur amino acid</text>
+<text x="0.0" y="0.0" font-size="62.0" font-weight="600" fill="#234E70" text-anchor="middle" dominant-baseline="central">ANGPTL4</text>
+<text x="50.0" y="70.0" font-size="58.1" font-weight="600" fill="#234E70" text-anchor="middle" dominant-baseline="central">adipose tissue</text>
+<text x="-102.3" y="-66.9" font-size="58.1" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">fasting</text>
+<text x="96.5" y="-80.1" font-size="55.3" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">PPAR</text>
+<text x="219.2" y="-29.4" font-size="49.1" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">LPL</text>
+<text x="88.6" y="136.2" font-size="45.5" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">adipocytes</text>
+<text x="-113.9" y="-148.1" font-size="41.4" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">gene expression</text>
+<text x="-254.5" y="-0.9" font-size="37.9" font-weight="600" fill="#1A1A1A" text-anchor="middle" dominant-baseline="central">regulation</text>
+<text x="171.6" y="-133.0" font-size="37.9" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">CREB3L3</text>
+<text x="-107.7" y="136.0" font-size="36.6" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">brown</text>
+<text x="-15.8" y="184.1" font-size="36.6" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">cold-induced</text>
+<text x="-242.6" y="42.3" font-size="36.6" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">fat</text>
+<text x="-2.7" y="-201.5" font-size="35.2" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">macrophages</text>
+<text x="-237.6" y="118.5" font-size="35.2" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">OHB</text>
+<text x="-284.7" y="-83.6" font-size="33.7" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">white</text>
+<text x="252.5" y="-182.7" font-size="33.7" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">metabolic</text>
+<text x="375.3" y="-72.6" font-size="33.7" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">truncated</text>
+<text x="-250.9" y="160.4" font-size="33.7" font-weight="500" fill="#555555" text-anchor="middle" dominant-baseline="central">plasma</text>
+<text x="-354.9" y="54.0" font-size="32.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">protein</text>
+<text x="395.5" y="-5.5" font-size="32.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">metabolism</text>
+<text x="385.0" y="62.9" font-size="32.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">mechanisms</text>
+<text x="275.7" y="182.4" font-size="30.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">transcriptional</text>
+<text x="326.2" y="-133.2" font-size="30.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">ketosis</text>
+<text x="344.1" y="127.2" font-size="30.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">expression</text>
+<text x="184.9" y="223.9" font-size="30.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">lipid</text>
+<text x="-35.7" y="253.7" font-size="30.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">cleavage</text>
+<text x="-250.6" y="205.7" font-size="30.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">genes</text>
+<text x="-393.3" y="92.9" font-size="28.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">dietary</text>
+<text x="-417.7" y="-51.5" font-size="28.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">inguinal</text>
+<text x="-380.8" y="-121.7" font-size="28.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">hepatic</text>
+<text x="-220.9" y="-231.2" font-size="28.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">Long-Term</text>
+<text x="11.1" y="-271.8" font-size="28.2" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">primary</text>
+<text x="245.0" y="-229.2" font-size="25.8" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">restriction</text>
+<text x="168.3" y="20.1" font-size="25.8" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">niche</text>
+<text x="16.9" y="288.9" font-size="25.8" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">Angptl4-hypomorphic</text>
+<text x="-235.7" y="253.0" font-size="25.8" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">chylous</text>
+<text x="-420.9" y="138.2" font-size="25.8" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">ascites</text>
+<text x="132.6" y="-260.8" font-size="22.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">response</text>
+<text x="-392.2" y="-178.4" font-size="22.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">activity</text>
+<text x="78.3" y="248.4" font-size="22.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">diet</text>
+<text x="-181.3" y="-283.2" font-size="22.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">browning</text>
+<text x="-212.1" y="81.4" font-size="22.6" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">BAT</text>
+<text x="226.3" y="-99.3" font-size="15.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">binding</text>
+<text x="24.6" y="218.2" font-size="15.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">fatty acid oxidation</text>
+<text x="332.3" y="-37.3" font-size="15.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">ketogenesis</text>
+<text x="-49.9" y="-233.9" font-size="15.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">myotubes</text>
+<text x="-480.0" y="-21.7" font-size="15.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">lymphadenopathy</text>
+<text x="56.7" y="-234.9" font-size="15.0" font-weight="500" fill="#9a9a9a" text-anchor="middle" dominant-baseline="central">intracellular</text>
 </svg>

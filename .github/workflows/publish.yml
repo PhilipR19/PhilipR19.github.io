@@ -7,7 +7,7 @@ on:
     - cron: "0 6 * * 1"   # weekly rebuild so new ORCID entries appear
 
 permissions:
-  contents: read
+  contents: write   # to commit the accumulated abstract cache back
   pages: write
   id-token: write
 
@@ -27,6 +27,16 @@ jobs:
         run: python scripts/fetch_publications.py || echo "OpenAlex fetch failed; using committed snapshot"
       - name: Rebuild research-themes word cloud (non-fatal)
         run: python scripts/wordcloud.py || echo "word cloud build failed; using committed snapshot"
+      - name: Persist accumulated abstract cache (non-fatal)
+        run: |
+          if ! git diff --quiet -- _abstracts.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add _abstracts.json
+            git commit -m "chore: accumulate abstract cache [skip ci]"
+            git push
+          fi
+        continue-on-error: true
       - uses: quarto-dev/quarto-actions/setup@v2
       - uses: quarto-dev/quarto-actions/render@v2
       - uses: actions/upload-pages-artifact@v3
