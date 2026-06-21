@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: "0 6 * * 1"   # weekly rebuild so new ORCID entries appear
+    - cron: "0 6 1 * *"   # monthly rebuild so new publications appear
 
 permissions:
   contents: write   # to commit the accumulated abstract cache back
