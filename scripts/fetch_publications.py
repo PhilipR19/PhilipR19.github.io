@@ -225,7 +225,9 @@ def collect_works() -> list[dict]:
 
 
 def bold_author(name: str) -> str:
-    return f"**{name}**" if "ruppert" in name.lower() else name
+    # Philip's own name is highlighted AND normalised to one canonical form,
+    # so it reads consistently regardless of how each source spelled it.
+    return "**PMM Ruppert**" if "ruppert" in name.lower() else name
 
 
 def _author_list(work: dict) -> str:

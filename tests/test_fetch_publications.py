@@ -13,7 +13,8 @@ def test_format_citation_openalex():
         "primary_location": {"source": {"display_name": "Journal of Lipid Research", "type": "journal"}},
     }
     out = format_citation(work)
-    assert "**Philip M. M. Ruppert**" in out
+    assert "**PMM Ruppert**" in out            # normalised to one canonical form
+    assert "Philip M. M. Ruppert" not in out   # source spelling is replaced
     assert "Sander Kersten" in out and "**Sander Kersten**" not in out
     assert "*A test paper on adipose epigenetics*" in out
     assert "Journal of Lipid Research" in out
@@ -21,8 +22,10 @@ def test_format_citation_openalex():
     assert "https://doi.org/10.1000/test" in out
 
 
-def test_bold_author_marks_ruppert():
-    assert bold_author("Philip Ruppert") == "**Philip Ruppert**"
+def test_bold_author_normalises_ruppert():
+    assert bold_author("Philip Ruppert") == "**PMM Ruppert**"
+    assert bold_author("Philip M. M. Ruppert") == "**PMM Ruppert**"
+    assert bold_author("PhilipM.M. Ruppert") == "**PMM Ruppert**"  # source typo, normalised
     assert bold_author("Sander Kersten") == "Sander Kersten"
 
 
