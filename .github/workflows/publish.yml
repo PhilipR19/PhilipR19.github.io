@@ -27,6 +27,8 @@ jobs:
         run: python scripts/fetch_publications.py || echo "OpenAlex fetch failed; using committed snapshot"
       - name: Rebuild research-themes word cloud (non-fatal)
         run: python scripts/wordcloud.py || echo "word cloud build failed; using committed snapshot"
+      - name: Refresh Google Scholar metrics (non-fatal)
+        run: python scripts/scholar_metrics.py || echo "Scholar metrics failed; using committed snapshot"
       - name: Persist accumulated abstract cache (non-fatal)
         run: |
           if ! git diff --quiet -- _abstracts.json; then

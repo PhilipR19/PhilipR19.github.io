@@ -3,8 +3,6 @@ title: "Publications"
 pagetitle: "Publications — Philip Ruppert"
 ---
 
-::: {.eyebrow}
-Compiled from Google Scholar, OpenAlex & ORCID · updated weekly
-:::
+{{< include _scholar_metrics.md >}}
 
 {{< include _publications.md >}}

@@ -148,6 +148,28 @@ h1, h2, h3, .display-name {
   }
 }
 
+// ── Publications: Google Scholar metrics row ─────────────────
+.scholar-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.4rem;
+  margin: 0 0 0.4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $hairline;
+  font-family: $font-family-monospace;
+  font-size: 0.84rem;
+  color: $muted;
+  text-decoration: none;
+  .gs-stat b { color: $ink; font-weight: 600; }
+  .gs-go {
+    margin-left: auto;
+    color: $accent;
+    border-bottom: 1px solid transparent;
+  }
+  &:hover .gs-go { border-bottom-color: $accent; }
+}
+
 // ── Publications: year headers + mono metadata ───────────────
 .pub-year {
   font-family: $font-family-monospace;
