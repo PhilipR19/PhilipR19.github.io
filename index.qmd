@@ -1,36 +1,79 @@
 ---
 pagetitle: "Philip Ruppert"
 description: "Research Associate, Kersten Lab, Cornell University — how nutrition writes the adipose epigenome."
+page-layout: custom
 ---
 
-::: {.hero}
-![](assets/photo.jpg){.portrait fig-alt="Philip Ruppert"}
+::: {.home}
+::: {.home-hero}
 
+::: {.home-side}
+![](assets/photo.jpg){.home-portrait fig-alt="Philip Ruppert"}
+
+::: {.home-contact}
+::: {.row}
+[Email]{.k}
+[pmr96@cornell.edu](mailto:pmr96@cornell.edu){.v}
+:::
+::: {.row}
+[ORCID]{.k}
+[0000-0002-4028-8200](https://orcid.org/0000-0002-4028-8200){.v}
+:::
+::: {.row}
+[GitHub]{.k}
+[PhilipR19](https://github.com/PhilipR19){.v}
+:::
+::: {.row}
+[Curriculum]{.k}
+[CV (PDF)](assets/cv.pdf){.v}
+:::
+:::
+:::
+
+::: {.home-body}
 [Research Associate · Kersten Lab · Cornell University]{.eyebrow}
 
-# Philip Ruppert {.display-name}
+# Philip Ruppert {.home-name}
 
-::: {.pathway}
-[Nutrition]{.stage}[→]{.link}[adipose epigenome]{.stage}[→]{.link}[storage capacity]{.stage}[→]{.link}[health & aging]{.stage}
+::: {.home-lede}
+I'm a molecular-nutrition scientist working out how diet is recorded in the
+epigenome of fat tissue — and how that record sets the body's capacity to store
+and burn energy, with consequences for metabolic health, aging, and resilience.
 :::
 
-::: {.lede}
-I'm a molecular-nutrition scientist studying how diet is recorded in the
-epigenome and physiology of fat tissue — and how that record sets the body's
-capacity to store and burn energy, with consequences for metabolic health,
-aging, and resilience.
+::: {.home-themes}
+[Research themes — one chain of cause and effect]{.sec-cap}
+
+::: {.home-cards}
+::: {.card}
+[01]{.n}
+[Nutrition]{.t}
+[Diet as a signal — fasting, ketogenesis, and sulfur amino acids reprogram metabolic tissue.]{.g}
+:::
+::: {.card}
+[02]{.n}
+[Adipose epigenome]{.t}
+[How nutritional state is written into the gene-regulatory landscape of fat cells.]{.g}
+:::
+::: {.card}
+[03]{.n}
+[Storage capacity]{.t}
+[The machinery setting what fat tissue can take up, store, and release.]{.g}
+:::
+::: {.card}
+[04]{.n}
+[Health & aging]{.t}
+[How storage capacity shapes metabolic health and resilience across a lifetime.]{.g}
+:::
+:::
+:::
 :::
 
-::: {.links}
-[Email](mailto:pmr96@cornell.edu)
-[ORCID](https://orcid.org/0000-0002-4028-8200)
-[GitHub](https://github.com/PhilipR19)
-[CV](assets/cv.pdf)
 :::
 :::
 
-::: {.themes}
-[Research themes — from my publications]{.eyebrow}
+::: {.home-cloud}
+[Recurring terms — across my publications]{.eyebrow}
 
 ::: {.wordcloud}
 {{< include _wordcloud.md >}}

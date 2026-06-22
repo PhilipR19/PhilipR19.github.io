@@ -2,28 +2,30 @@
 
 ### [2026]{.pub-year}
 
-- C Huang, JH Park, A Altıntaş, N Stanic, K Kyle de Leon, S Isacson, .... *Male obesity causes adipose mitochondrial dysfunction in F1 mouse progeny via a let-7-DICER axis*. Nature communications 2026.
+- Chien Huang, Joo-Hyun Park, Ali Altıntaş, Nataša Stanić, Kristine Kyle de Leon, Signe Isacson, Panagiotis Kalogeropoulos, Hande Topel, et al.. *Male obesity causes adipose mitochondrial dysfunction in F1 mouse progeny via a let-7-DICER axis*. Nature Communications 2026. [doi.org/10.1038/s41467-026-69686-5](https://doi.org/10.1038/s41467-026-69686-5)
 - **PMM Ruppert**, Aylin S Gueller, Marcus Skjæveland, Nataša Stanić, Jan‐Wilhelm Kornfeld. *Dietary sulfur amino acid restriction elicits a cold-like transcriptional response in inguinal but not epididymal white adipose tissue of male mice*. eLife 2026. [doi.org/10.7554/elife.108825.3](https://doi.org/10.7554/elife.108825.3)
-- N Trinks, S Gancheva, J Pützer, M Schön, M Huttasch, K Pafili, .... *Blood-flow restriction resistance training improves skeletal muscle mitochondrial capacity and cardiovascular risk factors in type 2 diabetes*. Cell Metabolism 2026.
-- MF Nørremark, R Petersen, **PMM Ruppert**, ES Jul, TK Doktor, R Nielsen, .... *Acyl‐CoA Binding Protein in White and Brown Adipose Tissue Is Dispensable for Systemic Energy Metabolism in Mice*. Acta Physiologica 242 (2), e70159 2026.
+- Nina Trinks, Sofiya Gancheva, Jennifer Pützer, Martin Schön, Maximilian Huttasch, Kalliopi Pafili, Lucia Mastrototaro, Bedair Dewidar, et al.. *Blood-flow restriction resistance training improves skeletal muscle mitochondrial capacity and cardiovascular risk factors in type 2 diabetes*. Cell Metabolism 2026. [doi.org/10.1016/j.cmet.2025.12.016](https://doi.org/10.1016/j.cmet.2025.12.016)
+- M. F. Nørremark, R. Petersen, **PMM Ruppert**, E. S. Jul, T. K. Doktor, Rasmus Nielsen, J. F. Kappel, S. Larsen, et al.. *Acyl‐ CoA Binding Protein in White and Brown Adipose Tissue Is Dispensable for Systemic Energy Metabolism in Mice*. Acta Physiologica 2026. [doi.org/10.1111/apha.70159](https://doi.org/10.1111/apha.70159)
 
 ### [2025]{.pub-year}
 
 - **PMM Ruppert**, Sander Kersten. *Regulation of Adipose Tissue Metabolism During Fasting*. Annual Review of Nutrition 2025. [doi.org/10.1146/annurev-nutr-120524-013857](https://doi.org/10.1146/annurev-nutr-120524-013857)
-- M Dall, K Herzog, A Hufnagel, DB Ibsen, B Lebiecka-Johansen, .... *Our future, we decide: five ways to reform the scientific publication process*. Nature Reviews Endocrinology 21 (1), 5-6 2025.
+- M Dall, K Herzog, A Hufnagel, DB Ibsen, B Lebiecka-Johansen, .... *Our future, we decide: five ways to reform the scientific publication process*. Nature Reviews Endocrinology 21 (1), 5-6 2025. [find ↗](https://scholar.google.com/scholar?q=Our%20future%2C%20we%20decide%3A%20five%20ways%20to%20reform%20the%20scientific%20publication%20process){.pub-search}
 - **PMM Ruppert**, Aylin S Güller, Marcus Rosendal, Nataša Stanić, Jan‐Wilhelm Kornfeld. *Dietary sulfur amino acid restriction elicits a cold-like transcriptional response in inguinal but not epididymal white adipose tissue of male mice*. bioRxiv (Cold Spring Harbor Laboratory) · preprint 2025. [doi.org/10.1101/2025.08.06.669020](https://doi.org/10.1101/2025.08.06.669020)
 - Mie Feldfoss Nørremark, Rikke Agnete Petersen, **PMM Ruppert**, Thomas Koed Doktor, Ronni Nielsen, Jesper From Kappel, Steen Larsen, Jan‐Wilhelm Kornfeld, et al.. *Acyl-CoA Binding Protein is Dispensable for White and Brown Adipose Tissue Function*. SSRN Electronic Journal · preprint 2025. [doi.org/10.2139/ssrn.5177184](https://doi.org/10.2139/ssrn.5177184)
 
 ### [2024]{.pub-year}
 
-- **PMM Ruppert**, S Kersten. *Mechanisms of hepatic fatty acid oxidation and ketogenesis during fasting*. Trends in Endocrinology & Metabolism 35 (2), 107-124 2024.
-- *Mechanisms of hepatic fatty acid oxidation and ketogenesis during fasting*. 2024. [doi.org/10.1016/j.tem.2023.10.002](https://doi.org/10.1016/j.tem.2023.10.002)
 - Franziska Grundler, Robin Mesnage, **PMM Ruppert**, Demetrios Kouretas, Françoise Wilhelmi de Toledo. *Long-Term Fasting-Induced Ketosis in 1610 Subjects: Metabolic Regulation and Safety*. Nutrients 2024. [doi.org/10.3390/nu16121849](https://doi.org/10.3390/nu16121849)
 - Sajjad Khani, Hande Topel, Ronja Kardinal, Ana Rita Tavanez, Ajeetha Josephrajan, Bjørk Ditlev Larsen, Michael J. Gaudry, Philipp Leyendecker, et al.. *Cold-induced expression of a truncated adenylyl cyclase 3 acts as rheostat to brown fat function*. Nature Metabolism 2024. [doi.org/10.1038/s42255-024-01033-8](https://doi.org/10.1038/s42255-024-01033-8)
 
+### [2023]{.pub-year}
+
+- **PMM Ruppert**, Sander Kersten. *Mechanisms of hepatic fatty acid oxidation and ketogenesis during fasting*. Trends in Endocrinology and Metabolism 2023. [doi.org/10.1016/j.tem.2023.10.002](https://doi.org/10.1016/j.tem.2023.10.002)
+
 ### [2022]{.pub-year}
 
-- R Mesnage, F Grundler, **PMM Ruppert**, FW de Toledo. *Clinical and Dietary Determinants of Ketosis During Long-Term Fasting in 1610 Subjects*. Current Developments in Nutrition 6, 382 2022.
+- Robin Mesnage, Franziska Grundler, **PMM Ruppert**, Françoise Wilhelmi de Toledo. *Clinical and Dietary Determinants of Ketosis During Long-Term Fasting in 1610 Subjects*. Current Developments in Nutrition 2022. [doi.org/10.1093/cdn/nzac054.037](https://doi.org/10.1093/cdn/nzac054.037)
 
 ### [2021]{.pub-year}
 
@@ -33,7 +35,6 @@
 ### [2020]{.pub-year}
 
 - **PMM Ruppert**. *Regulatory mechanisms of fasting*. 2020. [doi.org/10.18174/527117](https://doi.org/10.18174/527117)
-- RP MM. *Regulatory mechanisms of fasting*. 2020.
 - **PMM Ruppert**, Charlotte C. J. R. Michielsen, Eric J. Hazebroek, Ali Pirayesh, Gunilla Olivecrona, Lydia A. Afman, Sander Kersten. *Fasting induces ANGPTL4 and reduces LPL activity in human adipose tissue*. Molecular Metabolism 2020. [doi.org/10.1016/j.molmet.2020.101033](https://doi.org/10.1016/j.molmet.2020.101033)
 - Melanie Modder, Eline N. Kuipers, Ntsiki M. Held, Wietse In het Panhuis, **PMM Ruppert**, Sander Kersten, Sander Kooijman, B. Guisas, et al.. *A single day of high fat diet feeding induces lipid accumulation and insulin resistance in brown adipose tissue in mice*. Atherosclerosis 2020. [doi.org/10.1016/j.atherosclerosis.2020.10.267](https://doi.org/10.1016/j.atherosclerosis.2020.10.267)
 - **PMM Ruppert**, Sander Kersten. *A lipase fusion feasts on fat*. Journal of Biological Chemistry 2020. [doi.org/10.1074/jbc.h120.012744](https://doi.org/10.1074/jbc.h120.012744)
@@ -41,10 +42,8 @@
 ### [2019]{.pub-year}
 
 - **PMM Ruppert**, Jong‐Gil Park, Xu Xu, Kyu Yeon Hur, Ann–Hwee Lee, Sander Kersten. *Transcriptional profiling of PPARα−/− and CREB3L3−/− livers reveals disparate regulation of hepatoproliferative and metabolic functions of PPARα*. BMC Genomics 2019. [doi.org/10.1186/s12864-019-5563-y](https://doi.org/10.1186/s12864-019-5563-y)
-- AB Oteng, **PMM Ruppert**, L Boutens, W Dijk, XAMH van Dierendonck, .... *Characterization of ANGPTL4 function in macrophages and adipocytes using Angptl4-knockout and Angptl4-hypomorphic mice*. Journal of Lipid Research 60 (10), 1741-1754 2019.
-- *Characterization of ANGPTL4 function in macrophages and adipocytes using Angptl4-knockout and Angptl4-hypomorphic mice*. 2019. [doi.org/10.1194/jlr.m094128](https://doi.org/10.1194/jlr.m094128)
+- Antwi‐Boasiako Oteng, **PMM Ruppert**, Lily Boutens, Wieneke Dijk, Xanthe A.M.H. van Dierendonck, Gunilla Olivecrona, Rinke Stienstra, Sander Kersten. *Characterization of ANGPTL4 function in macrophages and adipocytes using Angptl4-knockout and Angptl4-hypomorphic mice*. Journal of Lipid Research 2019. [doi.org/10.1194/jlr.m094128](https://doi.org/10.1194/jlr.m094128)
 - **PMM Ruppert**, Antwi‐Boasiako Oteng, Lily Boutens, Rinke Stienstra, Sander Kersten. *Angptl4 Hypomorphic Mice Expressing Truncated Angptl4 Exhibit Lymphadenopathy And Mild Chylous Ascites Upon High Fat Feeding*. Atherosclerosis 2019. [doi.org/10.1016/j.atherosclerosis.2019.06.172](https://doi.org/10.1016/j.atherosclerosis.2019.06.172)
-- *04 - ANGPTL4 HYPOMORPHIC MICE EXPRESSING TRUNCATED ANGPTL4 EXHIBIT LYMPHADENOPATHY AND MILD CHYLOUS ASCITES UPON HIGH FAT FEEDING*. 2019. [doi.org/10.26226/morressier.5cc04c42c66852000b5aea41](https://doi.org/10.26226/morressier.5cc04c42c66852000b5aea41)
 
 ### [2018]{.pub-year}
 

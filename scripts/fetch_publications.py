@@ -246,13 +246,23 @@ def _norm_title(title: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", (title or "").lower()).strip()
 
 
+def _clean_title(title: str) -> str:
+    """Strip stray inline markup (e.g. JATS <scp>…</scp> small-caps tags that
+    some publisher records leak into display_name) and collapse whitespace."""
+    t = re.sub(r"<[^>]+>", "", title or "")
+    return re.sub(r"\s+", " ", t).strip()
+
+
 def _rank(work: dict) -> tuple:
-    """Higher is preferred: publishedVersion > journal-hosted > newer year."""
+    """Higher is preferred: publishedVersion > journal-hosted > has-DOI > newer.
+    The DOI tie-break keeps the richer (linkable) record when two otherwise
+    equivalent versions of the same paper collide."""
     loc = work.get("primary_location") or {}
     src = loc.get("source") or {}
     published = 1 if loc.get("version") == "publishedVersion" else 0
     journal = 1 if src.get("type") == "journal" else 0
-    return (published, journal, work.get("publication_year") or 0)
+    has_doi = 1 if work.get("doi") else 0
+    return (published, journal, has_doi, work.get("publication_year") or 0)
 
 
 def _tokens(title: str) -> set:
@@ -283,8 +293,9 @@ def _is_published(w: dict) -> bool:
 def dedupe(works: list[dict]) -> list[dict]:
     """Drop non-papers, then cluster reworded versions of the same paper.
     Within each cluster, keep the best PUBLISHED record and (separately) the
-    best PREPRINT record — so a preprint and its journal version both appear,
-    while same-version duplicates (multiple eLife/bioRxiv records) collapse."""
+    best genuine PREPRINT record — so a preprint and its journal version both
+    appear, while same-version duplicates (multiple eLife/bioRxiv records, or a
+    metadata-poor DOI-only stub of an already-published paper) collapse."""
     items = [w for w in works
              if (w.get("type") or "") not in DROP_TYPES and (w.get("display_name") or "").strip()]
     clusters: list[list[dict]] = []
@@ -298,17 +309,22 @@ def dedupe(works: list[dict]) -> list[dict]:
     reps: list[dict] = []
     for c in clusters:
         published = [w for w in c if _is_published(w)]
-        preprints = [w for w in c if not _is_published(w)]
+        preprints = [w for w in c if _is_preprint(w)]
         if published:
             reps.append(max(published, key=_rank))
         if preprints:
             reps.append(max(preprints, key=_rank))
+        if not published and not preprints:
+            # Metadata-poor cluster (no journal/preprint signal, e.g. a bare
+            # title+DOI stub) — keep only the single best record so the paper
+            # still appears exactly once rather than as duplicate fragments.
+            reps.append(max(c, key=_rank))
     return reps
 
 
 def format_citation(work: dict) -> str:
     authors = _author_list(work)
-    title = (work.get("display_name") or "").rstrip(".")
+    title = _clean_title(work.get("display_name")).rstrip(".")
     src = (work.get("primary_location") or {}).get("source") or {}
     venue = src.get("display_name") or ""
     if _is_preprint(work):
@@ -328,6 +344,11 @@ def format_citation(work: dict) -> str:
         url = doi if doi.startswith("http") else f"https://doi.org/{doi}"
         label = url.replace("https://", "").replace("http://", "")
         line += f" [{label}]({url})"
+    else:
+        # No DOI (brand-new paper or a Scholar-only record) — still give the
+        # reader a way through, via a Google Scholar title search.
+        q = urllib.parse.quote(title)
+        line += f" [find ↗](https://scholar.google.com/scholar?q={q}){{.pub-search}}"
     return line
 
 
