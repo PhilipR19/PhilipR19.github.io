@@ -72,6 +72,22 @@ h1, h2, h3 {
   margin-bottom: 1.6rem;
 }
 
+// ── Under-construction notice (provisional pages) ────────────
+// Same measure as .lede so it sits in the page's text column; tinted
+// from $accent rather than a new colour, and set below body size so it
+// reads as an aside about the page, not as the page's first paragraph.
+.under-construction {
+  font-size: 0.95rem;
+  color: $ink;
+  background: mix($accent, $paper, 6%);
+  border-left: 3px solid $accent;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.8rem;
+  max-width: 56ch;
+
+  p:last-child { margin-bottom: 0; }
+}
+
 // ── Home landing: two-column profile + research themes ───────
 // Left rail = identity (portrait + labelled contacts); right
 // column = role, name, statement, then the research program as

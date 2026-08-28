@@ -1,7 +1,13 @@
 ---
-title: "Research"
-pagetitle: "Research — Philip Ruppert"
+title: "Under construction"
+pagetitle: "Under construction — Philip Ruppert"
 ---
+
+::: {.under-construction}
+🚧 **This page is under construction.** The text below is an older sketch of my research
+interests and is being rewritten. Please read it as provisional. For current work, see
+[Publications](publications.qmd).
+:::
 
 ::: {.lede}
 My work follows one chain of cause and effect: how the food we eat is recorded

@@ -13,7 +13,7 @@ website:
     right:
       - text: Home
         href: index.qmd
-      - text: Research
+      - text: Under construction
         href: research.qmd
       - text: Publications
         href: publications.qmd
